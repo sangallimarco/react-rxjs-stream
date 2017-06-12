@@ -1,18 +1,14 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require('react');
+var _Subject2 = require('rxjs/Subject');
 
-var _streamManager = require('./stream-manager');
-
-var _streamManager2 = _interopRequireDefault(_streamManager);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+require('rxjs/add/operator/filter');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -20,29 +16,37 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var StreamComponent = function (_Component) {
-	_inherits(StreamComponent, _Component);
+/**
+ * Stream
+ */
+var Stream = function (_Subject) {
+  _inherits(Stream, _Subject);
 
-	function StreamComponent(props) {
-		_classCallCheck(this, StreamComponent);
+  function Stream() {
+    _classCallCheck(this, Stream);
 
-		// this holds stream constant
-		var _this = _possibleConstructorReturn(this, (StreamComponent.__proto__ || Object.getPrototypeOf(StreamComponent)).call(this, props));
+    return _possibleConstructorReturn(this, (Stream.__proto__ || Object.getPrototypeOf(Stream)).apply(this, arguments));
+  }
 
-		_this.streams = props.streams;
-		// this is the stream manager
-		_this.streamManager = new _streamManager2.default();
-		return _this;
-	}
+  _createClass(Stream, [{
+    key: 'on',
+    value: function on(id, name) {
+      return this.filter(function (data) {
+        return name ? data.id === id && name === name : data.id === id;
+      });
+    }
+  }, {
+    key: 'emit',
+    value: function emit(id, name, data) {
+      this.next({
+        id: id,
+        name: name,
+        data: data
+      });
+    }
+  }]);
 
-	_createClass(StreamComponent, [{
-		key: 'componentWillUnmount',
-		value: function componentWillUnmount() {
-			this.streamManager.destroy();
-		}
-	}]);
+  return Stream;
+}(_Subject2.Subject);
 
-	return StreamComponent;
-}(_react.Component);
-
-exports.default = StreamComponent;
+exports.default = Stream;

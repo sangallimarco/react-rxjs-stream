@@ -27,6 +27,7 @@ var StreamManager = function () {
 			var dispatcher = channel.filter(function (x) {
 				return actionKeys.includes(x.id);
 			}).subscribe(function (x) {
+				// return matching message
 				actions[x.id](x);
 			});
 
