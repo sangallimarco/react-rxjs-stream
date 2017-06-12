@@ -1,6 +1,6 @@
 {
   "name": "react-rxjs-stream",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Rxjs based loose coupling",
   "main": "build/index.js",
   "scripts": {
