@@ -19,16 +19,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * Stream
  */
-var Stream = function (_Subject) {
-  _inherits(Stream, _Subject);
+var StreamClass = function (_Subject) {
+  _inherits(StreamClass, _Subject);
 
-  function Stream() {
-    _classCallCheck(this, Stream);
+  function StreamClass() {
+    _classCallCheck(this, StreamClass);
 
-    return _possibleConstructorReturn(this, (Stream.__proto__ || Object.getPrototypeOf(Stream)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (StreamClass.__proto__ || Object.getPrototypeOf(StreamClass)).apply(this, arguments));
   }
 
-  _createClass(Stream, [{
+  _createClass(StreamClass, [{
     key: 'on',
     value: function on(id, name) {
       return this.filter(function (data) {
@@ -46,7 +46,7 @@ var Stream = function (_Subject) {
     }
   }]);
 
-  return Stream;
+  return StreamClass;
 }(_Subject2.Subject);
 
-exports.default = Stream;
+exports.default = StreamClass;

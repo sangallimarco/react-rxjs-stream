@@ -8,7 +8,7 @@ export default class Stream extends Subject {
 
 	on(id, name) {
 		return this.filter((data) => name
-			? (data.id === id && name === name)
+			? (data.id === id && data.name === name)
 			: (data.id === id));
 	}
 
