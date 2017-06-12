@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -20,33 +20,38 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * Stream
  */
 var Stream = function (_Subject) {
-  _inherits(Stream, _Subject);
+    _inherits(Stream, _Subject);
 
-  function Stream() {
-    _classCallCheck(this, Stream);
+    function Stream() {
+        _classCallCheck(this, Stream);
 
-    return _possibleConstructorReturn(this, (Stream.__proto__ || Object.getPrototypeOf(Stream)).apply(this, arguments));
-  }
-
-  _createClass(Stream, [{
-    key: 'on',
-    value: function on(id, name) {
-      return this.filter(function (data) {
-        return name ? data.id === id && data.name === name : data.id === id;
-      });
+        return _possibleConstructorReturn(this, (Stream.__proto__ || Object.getPrototypeOf(Stream)).apply(this, arguments));
     }
-  }, {
-    key: 'emit',
-    value: function emit(id, name, data) {
-      this.next({
-        id: id,
-        name: name,
-        data: data
-      });
-    }
-  }]);
 
-  return Stream;
+    _createClass(Stream, [{
+        key: 'on',
+        value: function on(id) {
+            var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+            return this.filter(function (data) {
+                return name ? data.id === id && data.name === name : data.id === id;
+            });
+        }
+    }, {
+        key: 'emit',
+        value: function emit(id) {
+            var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+            var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+            this.next({
+                id: id,
+                name: name,
+                data: data
+            });
+        }
+    }]);
+
+    return Stream;
 }(_Subject2.Subject);
 
 exports.default = Stream;
