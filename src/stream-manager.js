@@ -1,5 +1,6 @@
 export default class StreamManager {
-	constructor() {
+	
+    constructor() {
 		this.subs = [];
 	}
 
@@ -12,6 +13,7 @@ export default class StreamManager {
 		let dispatcher = channel
 			.filter(x => actionKeys.includes(x.id))
 			.subscribe(x => {
+                // return matching message
 				actions[x.id](x);
 			});
 

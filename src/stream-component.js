@@ -8,10 +8,10 @@ export default class StreamComponent extends Component {
 		// this holds stream constant
 		this.streams = props.streams;
 		// this is the stream manager
-		this.sm = new StreamManager();
+		this.streamManager = new StreamManager();
 	}
 
 	componentWillUnmount() {
-		this.sm.destroy();
+		this.streamManager.destroy();
 	}
 }
