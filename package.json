@@ -2,7 +2,7 @@
   "name": "react-rxjs-stream",
   "version": "0.0.1",
   "description": "Rxjs based loose coupling",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel -d build/ src/"
