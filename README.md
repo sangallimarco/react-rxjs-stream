@@ -1,9 +1,7 @@
 # react-rxjs-stream
 Rxjs based lib to handle component communication using loose coupling pattern
 
-***!!!Work in progress!!!***
-
-# WHY loose coupling
+# Loose Coupling
 Sometimes you need to trasverse the entire app in order to get a simple signal from a component. Loose coupling is a simple pattern that allows to create streams and subscribe to them. 
 
 # HOW TO
@@ -13,33 +11,25 @@ export a new stream const (index.js)
 
 ```JS
 import {Stream} from 'react-rxjs-stream';
-...
 
 // create upstream and downstream
 const Streams = {
 	inject: new Stream(),
 	change: new Stream()
 };
-...
 
-
-export {
-    Streams,
-    ...
-}
+export default Streams;
 ``` 
 
 
 ## Component
 
-Main Component
+Main Component (my-component.js)
 
 ```JS
-...
 import {StreamComponent} from 'react-rxjs-stream';
-import {Streams} from './';
+import {Streams} from './'; 
 import ButtonComponent from './button-component';
-...
 
 export default class MyComponent extends StreamComponent {
     
@@ -54,7 +44,7 @@ export default class MyComponent extends StreamComponent {
             }
         };
 
-        // this is defined in StreamComponent
+        // 'this.streamManager' is defined in StreamComponent class
         this.streamManager.dispatch(Streams.change, actions);
 
     }
@@ -74,10 +64,7 @@ export default class MyComponent extends StreamComponent {
 Child Component (button-component.js)
 
 ```JS
-...
 import {StreamComponent} from 'react-rxjs-stream';
-import {Streams} from './';
-...
 
 export default class ButtonComponent extends StreamComponent {
     
@@ -87,6 +74,7 @@ export default class ButtonComponent extends StreamComponent {
 
     handleClick(evt) {
         // select change channel and emit
+        // this.streams = this.props.streams
         this.streams.change.emit(
             'ButtonComponent',
             this.props.name, 
