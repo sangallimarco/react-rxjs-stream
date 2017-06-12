@@ -1,0 +1,47 @@
+{
+  "name": "react-rxjs-stream",
+  "version": "1.0.0",
+  "description": "Rxjs based loose coupling",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "babel -d build/ src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sangallimarco/react-rxjs-stream.git"
+  },
+  "keywords": [
+    "rxjs",
+    "react",
+    "loose",
+    "coupling",
+    "stream"
+  ],
+  "author": "sangalli.marco@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sangallimarco/react-rxjs-stream/issues"
+  },
+  "homepage": "https://github.com/sangallimarco/react-rxjs-stream#readme",
+  "dependencies": {
+    "react": "^15.5.4",
+    "rxjs": "^5.4.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "chai": "^3.5.0",
+    "karma": "^1.4.0",
+    "karma-babel-preprocessor": "^6.0.1",
+    "karma-chai": "^0.1.0",
+    "karma-chai-sinon": "^0.1.5",
+    "karma-coverage": "^1.1.1",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.2",
+    "karma-phantomjs-launcher": "^1.0.2",
+    "karma-webpack": "^2.0.1"
+  }
+}
