@@ -4,6 +4,10 @@ Rxjs based lib to handle component communication using loose coupling pattern
 # Loose Coupling
 Sometimes you need to trasverse the entire app in order to get a simple signal from a component. Loose coupling is a simple pattern that allows to create streams and subscribe to them. 
 
+# Install
+
+```npm i react-rxjs-stream```
+
 # HOW TO
 Here below a short example 
 
